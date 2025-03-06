@@ -231,3 +231,7 @@ async def maincore():
 
 def main():
     trio.run(maincore)
+
+
+if __name__ == "__main__":
+    main()

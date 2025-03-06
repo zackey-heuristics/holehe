@@ -1,6 +1,7 @@
 from holehe.localuseragent import ua
 import random
 import string
+import sys
 import requests  # Adjust if using a different HTTP library
 
 async def facebook(email, client, out):
@@ -26,7 +27,7 @@ async def facebook(email, client, out):
         # Extract CSRF token from the response
         token = response.text.split('{"config":{"csrf_token":"')[1].split('"')[0]
     except Exception as e:
-        print(f"Error occurred while fetching CSRF token: {e}")
+        # print(f"Error occurred while fetching CSRF token: {e}", file=sys.stderr)
         out.append({"name": name, "domain": domain, "method": method, "frequent_rate_limit": frequent_rate_limit,
                     "rateLimit": True,
                     "exists": False,
